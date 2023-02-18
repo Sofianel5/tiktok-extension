@@ -9,11 +9,14 @@
         "48": "images/logo@48px.png",
         "128": "images/logo@128px.png"
     },
+    "action": {
+        "default_popup": "content/popup.html"
+    },
     "content_scripts": [
         {
           "js": ["scripts/content.js"],
           "matches": [
-            "*"
+            "https://*/*"
           ]
         }
       ]
