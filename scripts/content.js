@@ -8,7 +8,9 @@ let selectedVideo = videos[Math.floor(Math.random() * videos.length)]
 
 function randomVideo() {
     console.log("random video")
-    selectedVideo = videos[Math.floor(Math.random() * videos.length)]
+    //select new video but not the same as the current one
+    videosWithoutCurrent = videos.filter(video => video !== selectedVideo)
+    selectedVideo = videosWithoutCurrent[Math.floor(Math.random() * videosWithoutCurrent.length)]
 }
 //document.getElementById("switchVideo").addEventListener("click", randomVideo);
 
@@ -30,7 +32,7 @@ function createDistraction () {
         player.appendChild(source)
         main.appendChild(player)
         setTimeout(() => {
-            selectedVideo = videos[Math.floor(Math.random() * videos.length)]
+            randomVideo()
         }, 720000)
     }
 }
@@ -50,7 +52,7 @@ chrome.runtime.onMessage.addListener(
         } else if (request.peter.switch) {
             // randomVideo();
             console.log("random video")
-            selectedVideo = videos[Math.floor(Math.random() * videos.length)]
+            randomVideo()
             disableDistraction()
             createDistraction()
 
