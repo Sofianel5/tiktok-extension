@@ -5,8 +5,11 @@
                 chrome.runtime.sendMessage({peter: {enable: true}});
             }
             async function disableGriffin() {
-                const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-                chrome.tabs.sendMessage(tab.id,{peter: {disable: true}});
+                chrome.tabs.query({}, tabs => {
+                    tabs.forEach(tab => {
+                    chrome.tabs.sendMessage(tab.id, msgObj);
+                    });
+                });
             }
         </script>
     </head>
