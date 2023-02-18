@@ -1,10 +1,15 @@
 function enableGriffin() {
-    chrome.runtime.sendMessage({peter: {enable: true}});
+    chrome.tabs.query({}, tabs => {
+        tabs.forEach(tab => {
+            chrome.tabs.sendMessage(tab.id, {peter: {enable: true}});
+        });
+    });
+    chrome.tabs.sendMessage({peter: {enable: true}});
 }
 async function disableGriffin() {
     chrome.tabs.query({}, tabs => {
         tabs.forEach(tab => {
-        chrome.tabs.sendMessage(tab.id, msgObj);
+            chrome.tabs.sendMessage(tab.id, {peter: {disable: true}});
         });
     });
 }
