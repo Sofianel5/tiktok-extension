@@ -17,9 +17,6 @@
         }
     }
     
-    button {
-        background-color: #f7f7f7;
-    }
     .dual {
         display: flex;
         flex-direction: row;
@@ -37,6 +34,14 @@
             button {
                 background-color: #f7f7f7;
                 height: 40px;
+                z-index: 10;
+                cursor: pointer;
+            }
+            .selections {
+                width: 100%;
+                .row {
+                    
+                }
             }
         }
     }
