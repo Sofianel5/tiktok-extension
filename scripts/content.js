@@ -2,6 +2,8 @@
 const videos = [
     "https://tiktokextension.s3.amazonaws.com/peter.mp4",
     "https://tiktokextension.s3.amazonaws.com/subway.mp4",
+    "https://tiktokextension.s3.amazonaws.com/sand.mp4",
+    "https://tiktokextension.s3.amazonaws.com/press.mp4"
 ]
 
 let selectedVideo = videos[Math.floor(Math.random() * videos.length)]
@@ -14,6 +16,8 @@ function randomVideo() {
     videosWithoutCurrent = videos.filter(video => video !== selectedVideo)
     selectedVideo = videosWithoutCurrent[Math.floor(Math.random() * videosWithoutCurrent.length)]
 }
+
+setTimeout(randomVideo, 3*60*1000)
 //document.getElementById("switchVideo").addEventListener("click", randomVideo);
 
 function createDistraction () {
@@ -45,6 +49,20 @@ function disableDistraction () {
     document.getElementById('ay-yo-mama').remove()
     distractionAlive = false;
 }
+
+function isCSPHeader(head) {
+    return (head === "CONTENT-SECURITY-POLICY") || (head === "X-WEBKIT-CSP")
+}
+
+// Danger: removes CSP from all pages
+// chrome.webRequest.onHeadersReceived.addListener((details) => {
+//     for (let i = 0; i < details.responseHeaders.length; i++) {
+//         if (isCSPHeader(details.responseHeaders[i].name.toUpperCase())) {
+//             const csp = "default-src * 'unsafe-inline' 'unsafe-eval' data: blowb:; "
+//             details.responseHeaders[i].value = csp
+//         }
+//     }
+// })
 
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
