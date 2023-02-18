@@ -1,3 +1,19 @@
+
+const videos = [
+    "https://tiktokextension.s3.amazonaws.com/peter.mp4",
+    "https://tiktokextension.s3.amazonaws.com/subway.mp4",
+]
+
+let selectedVideo = videos[Math.floor(Math.random() * videos.length)]
+
+function randomVideo() {
+    console.log("random video")
+    //select new video but not the same as the current one
+    videosWithoutCurrent = videos.filter(video => video !== selectedVideo)
+    selectedVideo = videosWithoutCurrent[Math.floor(Math.random() * videosWithoutCurrent.length)]
+}
+//document.getElementById("switchVideo").addEventListener("click", randomVideo);
+
 function createDistraction () {
     const main = document.querySelector('body')
     if (main) {
@@ -11,12 +27,12 @@ function createDistraction () {
         player.style.position = "sticky"
         player.style.bottom = "0"
         player.style.zIndex = "99999999999"
-        const source = document.createElement('source')
-        source.src = "https://tiktokextension.s3.amazonaws.com/subway.mp4"
+        let source = document.createElement('source')
+        source.src = selectedVideo
         player.appendChild(source)
         main.appendChild(player)
         setTimeout(() => {
-            source.src = "https://tiktokextension.s3.amazonaws.com/peter.mp4"
+            randomVideo()
         }, 720000)
     }
 }
@@ -28,9 +44,18 @@ function disableDistraction () {
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         if (request.peter.enable) {
+            // createDistraction();
             createDistraction();
         } else if (request.peter.disable) {
+            // disableDistraction();
             disableDistraction();
+        } else if (request.peter.switch) {
+            // randomVideo();
+            console.log("random video")
+            randomVideo()
+            disableDistraction()
+            createDistraction()
+
         }
     } 
 )
