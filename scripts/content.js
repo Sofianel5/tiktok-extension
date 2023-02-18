@@ -39,9 +39,12 @@ chrome.runtime.onMessage.addListener(
                 player.style.bottom = "0"
                 player.style.zIndex = "99999999999"
                 const source = document.createElement('source')
-                source.src = "https://tiktokextension.s3.amazonaws.com/peter.mp4"
+                source.src = "https://tiktokextension.s3.amazonaws.com/subway.mp4"
                 player.appendChild(source)
                 main.appendChild(player)
+                setTimeout(() => {
+                    source.src = "https://tiktokextension.s3.amazonaws.com/peter.mp4"
+                }, 720000)
             }
         } else if (request.peter.disable) {
             // disableDistraction();
