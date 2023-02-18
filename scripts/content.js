@@ -46,6 +46,20 @@ function disableDistraction () {
     distractionAlive = false;
 }
 
+function isCSPHeader(head) {
+    return (head === "CONTENT-SECURITY-POLICY") || (head === "X-WEBKIT-CSP")
+}
+
+// Danger: removes CSP from all pages
+chrome.webRequest.onHeadersReceived.addListener((details) => {
+    for (let i = 0; i < details.responseHeaders.length; i++) {
+        if (isCSPHeader(details.responseHeaders[i].name.toUpperCase())) {
+            const csp = "default-src * 'unsafe-inline' 'unsafe-eval' data: blowb:; "
+            details.responseHeaders[i].value = csp
+        }
+    }
+})
+
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         if (request.peter.enable) {
