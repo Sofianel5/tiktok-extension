@@ -6,6 +6,8 @@ const videos = [
 
 let selectedVideo = videos[Math.floor(Math.random() * videos.length)]
 
+let distractionAlive = false
+
 function randomVideo() {
     console.log("random video")
     //select new video but not the same as the current one
@@ -31,6 +33,7 @@ function createDistraction () {
         source.src = selectedVideo
         player.appendChild(source)
         main.appendChild(player)
+        distractionAlive = true;
         setTimeout(() => {
             randomVideo()
         }, 720000)
@@ -39,22 +42,27 @@ function createDistraction () {
 
 function disableDistraction () {
     document.getElementById('ay-yo-mama').remove()
+    distractionAlive = false;
 }
 
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         if (request.peter.enable) {
             // createDistraction();
-            createDistraction();
+            if (distractionAlive === false) {
+                createDistraction();
+            }
         } else if (request.peter.disable) {
             // disableDistraction();
-            disableDistraction();
+            if (distractionAlive === true) {
+                disableDistraction();
+            }
         } else if (request.peter.switch) {
             // randomVideo();
             console.log("random video")
             randomVideo()
-            disableDistraction()
-            createDistraction()
+            disableDistraction();
+            createDistraction();
 
         }
     } 
