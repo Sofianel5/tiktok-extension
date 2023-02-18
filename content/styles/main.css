@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .main {
   background-color: #28622f;
   width: 300px;
@@ -40,5 +44,23 @@
   cursor: pointer;
 }
 .main .dual .buttons .selections {
+  margin-top: 10px;
   width: 100%;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.main .dual .buttons .selections .item {
+  background-color: #f7f7f7;
+  height: 40px;
+  z-index: 10;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid black;
+}
+.main .dual .buttons .selections .item img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-position: center;
 }/*# sourceMappingURL=main.css.map */

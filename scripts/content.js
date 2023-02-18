@@ -30,7 +30,7 @@ function createDistraction () {
         player.style.height = "300px"
         player.style.width = "100%"
         player.style.objectFit = "cover"
-        player.style.position = "sticky"
+        player.style.position = "fixed"
         player.style.bottom = "0"
         player.style.left = "0"
         player.style.zIndex = "99999999999"
