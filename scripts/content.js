@@ -29,6 +29,9 @@ function createDistraction () {
         source.src = selectedVideo
         player.appendChild(source)
         main.appendChild(player)
+        setTimeout(() => {
+            selectedVideo = videos[Math.floor(Math.random() * videos.length)]
+        }, 720000)
     }
 }
 
