@@ -1,8 +1,18 @@
 <html>
+    <head>
+        <script>
+            function enableGriffin() {
+                chrome.runtime.sendMessage({peter: {enable: true}});
+            }
+            function disableGriffin() {
+                chrome.runtime.sendMessage({peter: {disable: true}});
+            }
+        </script>
+    </head>
     <body>
         <h1>Popup</h1>
         <p>Popup content</p>
-        <button onclick="createDistraction">Enable griffin</button>
-        <button onclick="disableDistraction">Disable griffin</button>
+        <button onclick="enableGriffin">Enable griffin</button>
+        <button onclick="disableGriffin">Disable griffin</button>
     </body>
 </html>
