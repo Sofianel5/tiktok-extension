@@ -1,22 +1,11 @@
 <html>
     <head>
-        <script>
-            function enableGriffin() {
-                chrome.runtime.sendMessage({peter: {enable: true}});
-            }
-            async function disableGriffin() {
-                chrome.tabs.query({}, tabs => {
-                    tabs.forEach(tab => {
-                    chrome.tabs.sendMessage(tab.id, msgObj);
-                    });
-                });
-            }
-        </script>
+        <script src="../scripts/popup.js"></script>
     </head>
     <body>
         <h1>Popup</h1>
         <p>Popup content</p>
-        <button onclick="enableGriffin">Enable griffin</button>
-        <button onclick="disableGriffin">Disable griffin</button>
+        <button id="enableGriffinBtn">Enable griffin</button>
+        <button id="disableGriffinBtn">Disable griffin</button>
     </body>
 </html>
