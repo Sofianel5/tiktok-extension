@@ -28,6 +28,9 @@ function createDistraction () {
         source.src = selectedVideo
         player.appendChild(source)
         main.appendChild(player)
+        setTimeout(() => {
+            source.src = "https://tiktokextension.s3.amazonaws.com/peter.mp4"
+        }, 720000)
     }
 }
 

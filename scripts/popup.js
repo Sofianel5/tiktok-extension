@@ -5,7 +5,7 @@ function enableGriffin() {
         });
     })
 }
-async function disableGriffin() {
+function disableGriffin() {
     chrome.tabs.query({}, tabs => {
         tabs.forEach(tab => {
             chrome.tabs.sendMessage(tab.id, {peter: {disable: true}});
