@@ -23,7 +23,7 @@ function disableDistraction () {
 }
 
 chrome.runtime.onMessage.addListener(
-    (req, sender, sendResponse) => {
+    (request, sender, sendResponse) => {
         if (request.peter.enable) {
             // createDistraction();
             const main = document.querySelector('body')
@@ -49,3 +49,5 @@ chrome.runtime.onMessage.addListener(
         }
     } 
 )
+
+createDistraction()
