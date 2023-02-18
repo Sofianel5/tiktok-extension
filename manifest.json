@@ -16,8 +16,11 @@
         {
           "js": ["scripts/content.js"],
           "matches": [
-            "https://*/*"
+            "https://*"
           ]
         }
-      ]
+    ],
+      "externally_connectable": {
+        "matches": ["https://*"]
+    }
 }
