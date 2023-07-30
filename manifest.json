@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "TikTok Peter Focus",
     "version": "1.0",
-    "description": "Add the TikTok Peter Focus extension to Chrome Extension documentation articles",
+    "description": "Focus with Peter.",
     "icons": {
         "16": "images/logo@16px.png",
         "32": "images/logo@32px.png",
