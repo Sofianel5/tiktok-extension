@@ -27,13 +27,20 @@ function createDistraction () {
         player.id = "ay-yo-mama"
         player.autoplay = true
         player.muted = true
-        player.style.height = "300px"
-        player.style.width = "100%"
+        player.style.height = "100vh"
+        player.style.width = "30%"
         player.style.objectFit = "cover"
         player.style.position = "fixed"
         player.style.bottom = "0"
-        player.style.left = "0"
+        player.style.right = "0"
         player.style.zIndex = "99999999999"
+
+        // get body and add 30% padding to the right
+        const body = document.querySelector('body')
+        body.style.paddingRight = "30%"
+        body.style.overflowX = "scroll"
+
+
         let source = document.createElement('source')
         source.src = selectedVideo
         player.appendChild(source)
