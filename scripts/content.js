@@ -78,6 +78,10 @@ function disableDistraction () {
     
     const loading = document.getElementById('loading-indicator')
     loading.remove()
+
+    const body = document.querySelector('body')
+    body.style.paddingRight = "0%"
+    body.style.overflowX = "scroll"
 }
 
 function isCSPHeader(head) {
@@ -119,8 +123,15 @@ chrome.runtime.onMessage.addListener(
             // createDistraction();
             console.log("switch to video")
             selectedVideo = videos[request.peter.videoId - 1]
-            disableDistraction();
-            createDistraction();
+            console.log(selectedVideo)
+            if (distractionAlive === true) {
+                disableDistraction();
+                createDistraction();
+            }
+            if (distractionAlive === false) {
+                console.log("!!!")
+                createDistraction();
+            }
         }
     } 
 )
